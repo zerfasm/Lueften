@@ -20,7 +20,7 @@ class Lueften extends IPSModule
 	$this->RegisterPropertyInteger('AlexaVolume', 40);
         $this->RegisterPropertyString('NameRoom', "");  
 	    
-	// Update trigger
+	// Reset trigger
         $this->RegisterTimer('TriggerReset', 0, "LUEF_RESET(\$_IPS['TARGET']);");
     }
 	
