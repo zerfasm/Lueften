@@ -16,7 +16,7 @@ class Lueften extends IPSModule
 			
 	// Alexa variables   
         $this->RegisterPropertyBoolean('TTSAlexa', false);
-        $this->RegisterPropertyString('AlexaID', "");
+        $this->RegisterPropertyInteger('AlexaID', null);
 	$this->RegisterPropertyInteger('AlexaVolume', 40);
         $this->RegisterPropertyString('NameRoom', "");
     }
