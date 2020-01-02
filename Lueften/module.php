@@ -21,7 +21,7 @@ class Lueften extends IPSModule
         $this->RegisterPropertyString('NameRoom', "");  
 	    
 	// Update trigger
-        $this->RegisterTimer('TriggerReset', 1, "LUEF_RESET(\$_IPS['TARGET']);");
+        $this->RegisterTimer('TriggerReset', 0, "LUEF_RESET(\$_IPS['TARGET']);");
     }
 	
     public function ApplyChanges()
@@ -157,14 +157,12 @@ class Lueften extends IPSModule
 	//we need to create one
 	if ($eid == 0) {
 	    $EventID = IPS_CreateEvent($Typ);
-		IPS_SetEventTrigger($EventID, 1, $this->ReadPropertyInteger('WindowValue'));
 		IPS_SetParent($EventID, $Parent);
 		IPS_SetIdent($EventID, $Ident);
 		IPS_SetName($EventID, $Name);
 		IPS_SetPosition($EventID, $Position);
 		IPS_SetEventScript($EventID, $Skript);
-		//IPS_SetEventCyclic($id, 0, 0, 0, 0, 2, 30);
-        	IPS_SetEventCyclicTimeFrom($EventID, 23, 0, 0);  
+		IPS_SetEventCyclicTimeFrom($EventID, 23, 0, 0);  
 		IPS_SetEventActive($EventID, true);  
 	}
     }
