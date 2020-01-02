@@ -66,7 +66,7 @@ class Lueften extends IPSModule
         // Gelüftet
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
-        $AID = $this->ReadPropertyString('AlexaID');   
+        $AID = $this->ReadPropertyInteger('AlexaID');   
         $AV = $this->ReadPropertyInteger('AlexaVolume'); 
 	    
 	$wv = $this->ReadPropertyInteger('WindowValue');
