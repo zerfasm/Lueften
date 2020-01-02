@@ -93,7 +93,7 @@ class Lueften extends IPSModule
 				if ($timewinopen >= $airtime)
 				{
 					// Status gelüftet setzen
-					$this->SetValue('Ventilate', true);
+					$this->SetValue('Ventilate', 1);
 					
 					//TTS Alexa Echo Remote Modul   
 					if ($tts == true)
@@ -114,7 +114,7 @@ class Lueften extends IPSModule
     public function Reset(int $duration)
     {
 	$this->SetValue('TimeWinOpen',0);
-	$this->SetValue('Ventilate',false);   
+	$this->SetValue('Ventilate',0);   
     }
 	
     private function RegisterTriggerWindow($Name, $Ident, $Typ, $Parent, $Position, $Skript)
