@@ -50,6 +50,8 @@ class Lueften extends IPSModule
 	{
 		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
 	};
+	    
+	$this->RegisterTriggerReset("Reset", "TriggerReset", 1, $this->InstanceID, 0,"LUEF_Reset(\$_IPS['TARGET']);")
     }
 
     public function Update()
@@ -136,6 +138,30 @@ class Lueften extends IPSModule
 		IPS_SetName($EventID, $Name);
 		IPS_SetPosition($EventID, $Position);
 		IPS_SetEventScript($EventID, $Skript); 
+		IPS_SetEventActive($EventID, true);  
+	}
+    }
+	
+    private function RegisterTriggerReset($Name, $Ident, $Typ, $Parent, $Position, $Skript)
+    {
+	$eid = @$this->GetIDForIdent($Ident);
+	if($eid === false) {
+		$eid = 0;
+	} elseif(IPS_GetEvent($eid)['EventType'] <> $Typ) {
+		IPS_DeleteEvent($eid);
+		$eid = 0;
+	}
+	//we need to create one
+	if ($eid == 0) {
+	    $EventID = IPS_CreateEvent($Typ);
+		IPS_SetEventTrigger($EventID, 1, $this->ReadPropertyInteger('WindowValue'));
+		IPS_SetParent($EventID, $Parent);
+		IPS_SetIdent($EventID, $Ident);
+		IPS_SetName($EventID, $Name);
+		IPS_SetPosition($EventID, $Position);
+		IPS_SetEventScript($EventID, $Skript);
+		//IPS_SetEventCyclic($id, 0, 0, 0, 0, 2, 30);
+        	IPS_SetEventCyclicTimeFrom($EventID, 23, 0, 0);  
 		IPS_SetEventActive($EventID, true);  
 	}
     }
