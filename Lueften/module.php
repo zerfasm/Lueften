@@ -21,7 +21,7 @@ class Lueften extends IPSModule
         $this->RegisterPropertyString('NameRoom', "");  
 	    
 	// Update trigger
-        $this->RegisterTimer('TriggerReset', 0, "LUEF_RESET(\$_IPS['TARGET']);");
+        $this->RegisterTimer('TriggerReset', 1, "LUEF_RESET(\$_IPS['TARGET']);");
     }
 	
     public function ApplyChanges()
