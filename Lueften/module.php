@@ -111,10 +111,10 @@ class Lueften extends IPSModule
         }
       }
 
-    public function Duration(int $duration)
+    public function Reset(int $duration)
     {
-        IPS_SetProperty($this->InstanceID, 'UpdateTimer', $duration);
-        IPS_ApplyChanges($this->InstanceID);
+	$this->SetValue('TimeWinOpen',0);
+	$this->SetValue('Ventilate',false);   
     }
 	
     private function RegisterTriggerWindow($Name, $Ident, $Typ, $Parent, $Position, $Skript)
