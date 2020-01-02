@@ -18,9 +18,7 @@ class Lueften extends IPSModule
         $this->RegisterPropertyBoolean('TTSAlexa', false);
         $this->RegisterPropertyInteger('AlexaID', null);
 	$this->RegisterPropertyInteger('AlexaVolume', 40);
-        $this->RegisterPropertyString('NameRoom', "");
-	    
-	$this->RegisterTimer('ResetTimer', 0, 'LUEF_ResetValues($_IPS["TARGET"]);'); 
+        $this->RegisterPropertyString('NameRoom', "");  
     }
     public function ApplyChanges()
     {
@@ -51,10 +49,8 @@ class Lueften extends IPSModule
 	{
 		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
 	};
-	 
-	// Trigger Reset um 00:00 Uhr    
-	//$this->RegisterTriggerReset("Reset", "TriggerReset", 1, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
-	$this->RegisterTriggerReset();
+	    
+	$this->RegisterTriggerReset("Reset", "TriggerReset", 1, $this->InstanceID, 0,"LUEF_Reset(\$_IPS['TARGET']);");
     }
     /**
      * This function will be available automatically after the module is imported with the module control.
