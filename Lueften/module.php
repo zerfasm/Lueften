@@ -24,9 +24,6 @@ class Lueften extends IPSModule
     {
         //Never delete this line!
         parent::ApplyChanges();
-	    
-        // Update Trigger Timer
-        $this->SetTimerInterval('UpdateTrigger', 1000 * 60 * $this->ReadPropertyInteger('UpdateTimer'));
 	         
         // Profile "SCHB.Ventilate"
         $association = [
