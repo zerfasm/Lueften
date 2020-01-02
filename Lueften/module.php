@@ -30,7 +30,7 @@ class Lueften extends IPSModule
             [0, 'Nicht gelüftet', 'Window-0', 0xFF0000],
             [1, 'Gelüftet', 'Window-100', 0x00FF00],
         ];
-        $this->RegisterProfile(vtInteger, 'LUEF.Ventilate', 'Window', 'Information', '', 0, 0, 0, 0, $association);
+        $this->RegisterProfile(vtInteger, 'LUEF.Ventilate', 'Window', '', '', 0, 0, 0, 0, $association);
                
 	//Geöffnet um
 	$this->RegisterVariableInteger('WinOpen', 'Fenster geöffnet','~UnixTimestamp',12);
