@@ -19,6 +19,8 @@ class Lueften extends IPSModule
         $this->RegisterPropertyInteger('AlexaID', null);
 	$this->RegisterPropertyInteger('AlexaVolume', 40);
         $this->RegisterPropertyString('NameRoom', "");
+	    
+	$this->RegisterTimer('ResetTimer', 0, 'LUEF_ResetValues($_IPS["TARGET"]);'); 
     }
     public function ApplyChanges()
     {
@@ -49,6 +51,10 @@ class Lueften extends IPSModule
 	{
 		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
 	};
+	 
+	// Trigger Reset um 00:00 Uhr    
+	//$this->RegisterTriggerReset("Reset", "TriggerReset", 1, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
+	$this->RegisterTriggerReset();
     }
     /**
      * This function will be available automatically after the module is imported with the module control.
@@ -155,13 +161,19 @@ class Lueften extends IPSModule
 	//we need to create one
 	if ($eid == 0) {
 	    $EventID = IPS_CreateEvent($Typ);
-		IPS_SetEventTrigger($EventID, 1, $this->ReadPropertyInteger('WindowValue'));
 		IPS_SetParent($EventID, $Parent);
 		IPS_SetIdent($EventID, $Ident);
 		IPS_SetName($EventID, $Name);
 		IPS_SetPosition($EventID, $Position);
 		IPS_SetEventScript($EventID, $Skript); 
 		IPS_SetEventActive($EventID, true);  
+		$Now = new DateTime();
+  		$Target = new DateTime();
+  		$Target->modify('+1 day');
+  		$Target->setTime(0, 0, 5);
+  		$Diff = $Target->getTimestamp() - $Now->getTimestamp();
+  		$Interval = $Diff * 1000;
+  		$this->SetTimerInterval("ResetTimer", $Interval); 
 	}
     }
 }
