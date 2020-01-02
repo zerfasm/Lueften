@@ -86,13 +86,14 @@ class Lueften extends IPSModule
 			{
 				$winopen = $this->GetValue('WinOpen'); 
 				$winclose = $this->GetValue('WinClose');
-				$timewinopen = $this->GetValue('TimeWinOpen');
-				$airtime = $this->ReadPropertyInteger('AirTime');
-			
+				
 				$timediff = (($winclose - $winopen)/60);
 				$this->SetValue('TimeWinOpen',$timediff);
 				
-				//if ($timewinopen >= 15)
+				// Differenzzeit berechnen
+				$timewinopen = $this->GetValue('TimeWinOpen');
+				$airtime = $this->ReadPropertyInteger('AirTime');
+				
 				if ($timewinopen >= $airtime)
 				{
 					// Status gelüftet setzen
