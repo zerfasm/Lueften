@@ -51,7 +51,7 @@ class Lueften extends IPSModule
 		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
 	};
 	    
-	$this->RegisterTriggerReset("Reset", "TriggerReset", 1, $this->InstanceID, 0,"LUEF_Reset(\$_IPS['TARGET']);")
+	$this->RegisterTriggerReset("Reset", "TriggerReset", 1, $this->InstanceID, 0,"LUEF_Reset(\$_IPS['TARGET']);");
     }
 
     public function Update()
