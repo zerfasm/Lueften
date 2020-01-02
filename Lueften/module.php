@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/../libs/traits.php';  // Allgemeine Funktionen
 // CLASS ClimateCalculation
-class ClimateCalculation extends IPSModule
+class Lueften extends IPSModule
 {
     use ProfileHelper, DebugHelper;
     public function Create()
