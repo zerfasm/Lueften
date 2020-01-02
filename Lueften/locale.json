@@ -1,8 +1,19 @@
 {
-    "translations": {
-        "de": {
-            "Translation 1": "Übersetzung 1",
-            "Translation 2": "Übersetzung 2"
-        }
+  "translations": {
+    "de": {
+
+	"Ventilate": "Lüften",
+    "Window:": "Fenster:", 
+	"Name Room": "Name Raum", 
+	"Air Time [min]:": "Lüftungszeit [min]:",    
+	"Use TTS?": "Ausgabe über TTS", 
+	"Volume Alexa:": "Lautstärke Alexa:",    
+	
+    "Update Timer:": "Aktualisierungszeit:",
+	"Update Timer Air:": "Lüftungszeit:",   
+       
+    "Calculate values!": "Werte berechnen!",
+    "CALCULATE": "BERECHNEN"
     }
+  }
 }
