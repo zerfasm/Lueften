@@ -113,7 +113,7 @@ class Lueften extends IPSModule
 
     public function Reset()
     {
-	$this->SetValue('WinOpen', 0)    
+	$this->SetValue('WinOpen', 0);    
 	$this->SetValue('TimeWinOpen',0);
 	$this->SetValue('Ventilate',0);   
     }
