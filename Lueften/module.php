@@ -25,7 +25,7 @@ class Lueften extends IPSModule
         //Never delete this line!
         parent::ApplyChanges();
 	         
-        // Profile "SCHB.Ventilate"
+        // Profile "LUEF.Ventilate"
         $association = [
             [0, 'Nicht gelüftet', 'Window-0', 0xFF0000],
             [1, 'Gelüftet', 'Window-100', 0x00FF00],
@@ -42,12 +42,12 @@ class Lueften extends IPSModule
 	$this->RegisterVariableInteger('TimeWinOpen', 'Zeit Fenster geöffnet','time.min',14);
 	    
         //Gelüftet
-	$this->RegisterVariableInteger('Ventilate', 'Gelüftet','SCHB.Ventilate',15);   
+	$this->RegisterVariableInteger('Ventilate', 'Gelüftet','LUEF.Ventilate',15);   
 	       
     	// Trigger Fenster
 	if ($this->ReadPropertyInteger('WindowValue') > 0)
 	{
-		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"SCHB_Update(\$_IPS['TARGET']);");
+		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"LUEF_Update(\$_IPS['TARGET']);");
 	};
     }
     /**
@@ -113,14 +113,7 @@ class Lueften extends IPSModule
             $state = false;
         }
       }
-    /**
-     * This function will be available automatically after the module is imported with the module control.
-     * Using the custom prefix this function will be callable from PHP and JSON-RPC through:.
-     *
-     * SCHB_Duration($id, $duration);
-     *
-     * @param int $duration Wartezeit einstellen.
-     */
+
     public function Duration(int $duration)
     {
         IPS_SetProperty($this->InstanceID, 'UpdateTimer', $duration);
